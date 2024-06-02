@@ -11,9 +11,10 @@ export class TenantCreatedListener {
 
     @OnEvent('tenant.created')
     async handleMockCreateEvent(event: any) {
-        console.log('[EVENT] [Groups] [Listeners] [tenant.created] EventData');
-
         try {
+            console.log('[EVENT] [Groups] [Listeners] [tenant.created] EventData',
+                event
+            );
             const newGroup = await this.service.create(event._id, {
                 name: 'Intern',
                 description: 'Austausch Gruppe für die Mitarbeiter',
@@ -27,10 +28,11 @@ export class TenantCreatedListener {
                 visible: true,
             });
             this.eventEmitter.emit('group.created', {
-                users: event.users,
+                minRole: event.minRole,
+                members: event.members,
+                owners: event.owners,
                 tenant: event.tenant,
                 group: newGroup,
-                channels: newGroup.channels,
             });
         } catch (e) {
             console.error('[EVENT] [groups] [tenant.created] Fehler:');

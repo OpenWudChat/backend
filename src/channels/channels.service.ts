@@ -13,15 +13,9 @@ export class ChannelsService {
     ) {}
 
     async create(
-        tenantId: string,
-        groupId: string,
         createDto: CreateChannelDto,
     ): Promise<Channel> {
         try {
-            console.log('create Channel');
-            // console.log('Tenant ID: ', createDto);
-            // console.log('Group ID: ', groupId);
-            // console.log('createDto: ', createDto);
             return await this.model.create(createDto);
         } catch (error) {
             throw new HttpException('Conflict!', HttpStatus.CONFLICT);

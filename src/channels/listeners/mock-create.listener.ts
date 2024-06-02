@@ -21,7 +21,7 @@ export class MockCreateListener {
         try {
             for (const channel of event.channels) {
                 // console.log(event.group)
-                await this.service.create(event.tenant._id, event.group._id, {
+                await this.service.create({
                     name: channel.name,
                     description: channel.description,
                     color: channel.color || '#000000',

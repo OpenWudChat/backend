@@ -7,7 +7,7 @@ import { User, UserSchema } from '../user/schemas/user.schema';
 import { Tenant, TenantsSchema } from '../tenants/schemas/tenants.schema';
 import { MockCreateListener } from './listeners/mock-create.listener';
 import { MockDeleteListener } from './listeners/mock-delete.listener';
-import {TenantCreatedListener} from "./listeners/tenant-created-listener.service";
+import {TenantCreatedListener} from "./listeners/tenant-created.listener";
 
 @Module({
     imports: [

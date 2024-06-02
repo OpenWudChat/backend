@@ -7,6 +7,7 @@ import { Tenant, TenantsSchema } from '../tenants/schemas/tenants.schema';
 import { Group, GroupSchema } from '../goups/schemas/group.schema';
 import { MockCreateListener } from './listeners/mock-create.listener';
 import { MockDeleteListener } from './listeners/mock-delete.listener';
+import {GroupCreateListener} from "./listeners/group-created.listener";
 
 @Module({
     imports: [
@@ -17,6 +18,6 @@ import { MockDeleteListener } from './listeners/mock-delete.listener';
         ]),
     ],
     controllers: [ChannelsController],
-    providers: [ChannelsService, MockCreateListener, MockDeleteListener],
+    providers: [ChannelsService, MockCreateListener, MockDeleteListener, GroupCreateListener],
 })
 export class ChannelsModule {}
