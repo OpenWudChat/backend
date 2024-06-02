@@ -57,10 +57,10 @@ export class CreateGroupDto {
 
     @ApiProperty({
         example: 'afsadf32rsadfe3',
-        description: 'Division of the Group',
+        description: 'Tenant of the Group',
     })
     @IsString()
-    division: string;
+    tenant: string;
 
     @ApiProperty({
         example: 'EMPLOYEE',

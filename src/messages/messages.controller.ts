@@ -40,11 +40,11 @@ export class MessagesController {
     })
     create(
         @Body() createMessageDto: CreateMessageDto,
-        @Param('divisionId') divisionId: string,
+        @Param('tenantId') tenantId: string,
         @Param('groupId') groupId: string,
         @Param('channelId') channelId: string,
     ) {
-        // console.log(divisionId, groupId, channelId);
+        // console.log(tenantId, groupId, channelId);
         return this.messagesService.create(createMessageDto);
     }
 

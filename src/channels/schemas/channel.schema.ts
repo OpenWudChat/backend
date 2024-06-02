@@ -52,8 +52,8 @@ export class Channel {
     @ApiProperty({
         description: 'Messages of the Channel',
     })
-    @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Division' })
-    division: Tenant;
+    @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Tenant' })
+    tenant: Tenant;
 
     @ApiProperty({
         description: 'Messages of the Channel',

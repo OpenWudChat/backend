@@ -38,15 +38,15 @@ export class ChannelsController {
         description: 'New Channel created',
         type: Channel,
     })
-    @ApiQuery({ name: 'divisionId' })
+    @ApiQuery({ name: 'tenantId' })
     @ApiQuery({ name: 'groupId' })
     create(
-        @Param('divisionId') divisionId: string,
+        @Param('tenantId') tenantId: string,
         @Param('groupId') groupId: string,
         @Body() createChannelDto: CreateChannelDto,
     ) {
         return this.channelsService.create(
-            divisionId,
+            tenantId,
             groupId,
             createChannelDto,
         );

@@ -14,18 +14,18 @@ export class MockCreateListener {
     async handleMockCreateEvent(event: {
         users: any;
         groups: any;
-        division: any;
+        tenant: any;
     }) {
         console.log('[EVENT] [MOCK] [Groups] [Listeners] [mock.create.groups] EventData');
 
         try {
             for (const group of event.groups) {
-                const newGroup = await this.service.create(event.division._id, {
+                const newGroup = await this.service.create(event.tenant._id, {
                     name: group.name,
                     description: group.description,
                     color: group.color || '#000000',
                     icon: group.icon || 'fa fa-hashtag',
-                    division: event.division._id,
+                    tenant: event.tenant._id,
                     channels: [],
                     members: group.members,
                     owners: group.owners,
@@ -35,7 +35,7 @@ export class MockCreateListener {
 
                 this.eventEmitter.emit('mock.create.channels', {
                     users: event.users,
-                    division: event.division,
+                    tenant: event.tenant,
                     group: newGroup,
                     channels: group.channels,
                 });

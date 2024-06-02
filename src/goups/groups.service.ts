@@ -15,7 +15,7 @@ export class GroupsService {
     ) {}
 
     async create(
-        division: any,
+        tenant: any,
         createDto: CreateGroupDto,
     ): Promise<Group> {
         try {
@@ -33,18 +33,18 @@ export class GroupsService {
         }
     }
 
-    async findAll(currentUser?: User, divisionId?: string): Promise<Group[] | null> {
+    async findAll(currentUser?: User, tenantId?: string): Promise<Group[] | null> {
         try {
             let filter = {};
             if (currentUser)
                 filter = { members: currentUser._id, ...filter };
-            if (divisionId)
-                filter = { division: divisionId, ...filter };
+            if (tenantId)
+                filter = { tenant: tenantId, ...filter };
 
             return this.model.find(filter)
                 .populate('owners')
                 .populate('members')
-                .populate('division')
+                .populate('tenant')
                 .populate('channels')
         } catch (error) {
             throw new HttpException(

@@ -194,12 +194,12 @@ export class MockCreateListener {
                         minRole: 'client',
                     },
                 ],
-                division: tenantAmbulant,
+                tenant: tenantAmbulant,
             });
 
 
             // Stationär
-            const divisionStationaer = await this.service.create({
+            const tenantStationaer = await this.service.create({
                 name: 'Stationär',
                 description: 'Demo Bereich: Stationär',
                 color: '#000000',
@@ -389,10 +389,10 @@ export class MockCreateListener {
                         minRole: 'client',
                     },
                 ],
-                division: divisionStationaer,
+                tenant: tenantStationaer,
             });
         } catch (e) {
-            console.error('[EVENT] [mock.create.divisions] Fehler:');
+            console.error('[EVENT] [mock.create.tenants] Fehler:');
             console.error(e);
         }
     }

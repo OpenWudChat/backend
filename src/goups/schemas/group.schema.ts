@@ -50,10 +50,10 @@ export class Group {
     icon: string;
 
     @ApiProperty({
-        description: 'Division of the Group',
+        description: 'Tenant of the Group',
     })
-    @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Division' })
-    division: Tenant;
+    @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Tenant' })
+    tenant: Tenant;
 
     @ApiProperty({
         description: 'Owners of the Group',

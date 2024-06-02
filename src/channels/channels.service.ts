@@ -13,13 +13,13 @@ export class ChannelsService {
     ) {}
 
     async create(
-        divisionId: string,
+        tenantId: string,
         groupId: string,
         createDto: CreateChannelDto,
     ): Promise<Channel> {
         try {
             console.log('create Channel');
-            // console.log('Division ID: ', createDto);
+            // console.log('Tenant ID: ', createDto);
             // console.log('Group ID: ', groupId);
             // console.log('createDto: ', createDto);
             return await this.model.create(createDto);

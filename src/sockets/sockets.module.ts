@@ -5,7 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { User, UserSchema } from '../user/schemas/user.schema';
 import { ChannelsListener } from './listeners/channels.listener';
 import { GroupsListener } from './listeners/groups.listener';
-import { DivisionsListener } from './listeners/divisions.listener';
+import { TenantListener } from './listeners/tenants.listener';
 
 @Module({
     imports: [
@@ -18,7 +18,7 @@ import { DivisionsListener } from './listeners/divisions.listener';
         SocketsGateway,
         ChannelsListener,
         GroupsListener,
-        DivisionsListener,
+        TenantListener,
     ],
 })
 export class SocketsModule {}

@@ -13,7 +13,7 @@ export class MockCreateListener {
         channels: any;
         owners: any;
         members: any;
-        division: any;
+        tenant: any;
         group: any;
     }) {
         console.log('[EVENT] [MOCK] [Channels] [Listeners] [mock.create.channels] EventData');
@@ -21,12 +21,12 @@ export class MockCreateListener {
         try {
             for (const channel of event.channels) {
                 // console.log(event.group)
-                await this.service.create(event.division._id, event.group._id, {
+                await this.service.create(event.tenant._id, event.group._id, {
                     name: channel.name,
                     description: channel.description,
                     color: channel.color || '#000000',
                     icon: channel.icon || 'fa fa-hashtag',
-                    division: event.division._id,
+                    tenant: event.tenant._id,
                     group: event.group._id,
                     messages: [],
                     members: channel.members,
@@ -38,7 +38,7 @@ export class MockCreateListener {
                 // TODO: Hier müssen noch Fake Nachrichten eingefügt werden
                 // this.eventEmitter.emit('mock.create.channels', {
                 //     users: event.users,
-                //     division: event.division,
+                //     tenant: event.tenant,
                 //     group: event.group,
                 //     channel: channel,
                 // });

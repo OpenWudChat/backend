@@ -1,4 +1,4 @@
 export class GroupCreatedEvent {
-    divisionId: string;
+    tenantId: string;
     groupId: string;
 }

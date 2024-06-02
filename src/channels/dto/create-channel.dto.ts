@@ -33,11 +33,11 @@ export class CreateChannelDto {
 
     @ApiProperty({
         example: 'asdfsadf7897asdf98787asdf',
-        description: 'Division of the Channel',
+        description: 'Tenant of the Channel',
     })
     @IsArray()
     @IsString()
-    division: string;
+    tenant: string;
 
     @ApiProperty({
         example: 'asdfsadf7897asdf98787asdf',

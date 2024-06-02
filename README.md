@@ -23,7 +23,7 @@ Run `DELETE: localhost:3000/api/v1/mock` to delete mock data
 
 ## Demo User
 
-| Username              | Password | Division            | Group | Channel | Roles             |
+| Username              | Password | Tenants             | Group | Channel | Roles             |
 |-----------------------|----------|---------------------|-------|---------|-------------------|
 | john@luminaa.chat     | demo     | Stationär, Ambulant |       |         | employee,admin    |
 | beate@luminaa.chat    | demo     | Stationär           |       |         | employee,teamlead |

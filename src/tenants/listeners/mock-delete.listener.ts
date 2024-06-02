@@ -8,12 +8,12 @@ export class MockDeleteListener {
 
     @OnEvent('mock.delete')
     async handleMockDeleteEvent() {
-        console.log('[EVENT] [MOCK] [Divisions] [Listeners] [mock.delete] EventData');
+        console.log('[EVENT] [MOCK] [Tenants] [Listeners] [mock.delete] EventData');
         try {
-            // Delete Demo Divisions
+            // Delete Demo Tenants
             await this.service.deleteAll();
         } catch (e) {
-            console.error('[EVENT] [mock.delete.divisions] Fehler:');
+            console.error('[EVENT] [mock.delete.tenants] Fehler:');
             console.error(e);
         }
     }

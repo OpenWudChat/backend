@@ -102,7 +102,7 @@ export class MockCreateListener {
                 roles: ['employee', 'teamlead'],
             });
 
-            this.eventEmitter.emit('mock.create.divisions', {
+            this.eventEmitter.emit('mock.create.tenants', {
                 users: {
                     demoUserJohn: demoUserJohn,
                     demoUserTim: demoUserTim,

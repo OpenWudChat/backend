@@ -3,15 +3,15 @@ import { EventEmitter2, OnEvent } from '@nestjs/event-emitter';
 import { GroupsService } from '../groups.service';
 
 @Injectable()
-export class DivisionCreatedListener {
+export class TenantCreatedListener {
     constructor(
         private readonly service: GroupsService,
         private eventEmitter: EventEmitter2,
     ) {}
 
-    @OnEvent('division.created')
+    @OnEvent('tenant.created')
     async handleMockCreateEvent(event: any) {
-        console.log('[EVENT] [Groups] [Listeners] [division.created] EventData');
+        console.log('[EVENT] [Groups] [Listeners] [tenant.created] EventData');
 
         try {
             const newGroup = await this.service.create(event._id, {
@@ -19,7 +19,7 @@ export class DivisionCreatedListener {
                 description: 'Austausch Gruppe für die Mitarbeiter',
                 color: '#000000',
                 icon: 'shield',
-                division: event,
+                tenant: event,
                 channels: [],
                 members: event.members,
                 owners: event.owners,
@@ -28,12 +28,12 @@ export class DivisionCreatedListener {
             });
             this.eventEmitter.emit('group.created', {
                 users: event.users,
-                division: event.division,
+                tenant: event.tenant,
                 group: newGroup,
                 channels: newGroup.channels,
             });
         } catch (e) {
-            console.error('[EVENT] [groups] [division.created] Fehler:');
+            console.error('[EVENT] [groups] [tenant.created] Fehler:');
             console.error(e);
         }
     }

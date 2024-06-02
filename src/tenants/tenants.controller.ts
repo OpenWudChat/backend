@@ -42,7 +42,7 @@ export class TenantsController {
     @ApiQuery({
         name: 'userId',
         type: String,
-        description: 'Compute special devisions for a specific User',
+        description: 'Compute special Tenants for a specific User',
         required: false,
     })
     create(

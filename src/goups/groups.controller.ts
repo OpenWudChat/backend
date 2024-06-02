@@ -24,7 +24,7 @@ import {User} from "../user/schemas/user.schema";
 
 //@ApiBearerAuth()
 @ApiTags('groups')
-// @Controller('/divisions/:divisionId/groups')
+// @Controller('/tenants/:tenantId/groups')
 @Controller('groups')
 export class GroupsController {
     constructor(private readonly groupsService: GroupsService) {}
@@ -56,9 +56,9 @@ export class GroupsController {
         description: 'List of all Groups',
         type: [Group],
     })
-    @ApiQuery({ name: 'divisionId', required: false })
-    findAll(@CurrentUser() currentUser: User, @Query('divisionId') divisionId?: string) {
-        return this.groupsService.findAll(currentUser, divisionId);
+    @ApiQuery({ name: 'tenantId', required: false })
+    findAll(@CurrentUser() currentUser: User, @Query('tenantId') tenantId?: string) {
+        return this.groupsService.findAll(currentUser, tenantId);
     }
 
     @Get(':id')
