@@ -1,5 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsArray, IsBoolean, IsNotEmpty, IsString } from 'class-validator';
+import {Prop} from "@nestjs/mongoose";
+import mongoose from "mongoose";
+import {User} from "../../user/schemas/user.schema";
 
 export class CreateDivisionDto {
     @ApiProperty({
@@ -36,16 +39,16 @@ export class CreateDivisionDto {
         description: 'Owners of the Division',
     })
     @IsArray()
-    @IsString()
-    owners: string[];
+    @IsString()@Prop([{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }])
+    owners: User[];
 
     @ApiProperty({
         example: [],
         description: 'Members of the Division',
     })
     @IsArray()
-    @IsString()
-    members: string[];
+    @IsString()@Prop([{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }])
+    members: User[];
 
     @ApiProperty({
         example: [],

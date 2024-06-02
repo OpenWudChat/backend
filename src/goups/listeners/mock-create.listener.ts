@@ -20,7 +20,7 @@ export class MockCreateListener {
 
         try {
             for (const group of event.groups) {
-                await this.service.create(event.division._id, {
+                const newGroup = await this.service.create(event.division._id, {
                     name: group.name,
                     description: group.description,
                     color: group.color || '#000000',
@@ -36,7 +36,7 @@ export class MockCreateListener {
                 this.eventEmitter.emit('mock.create.channels', {
                     users: event.users,
                     division: event.division,
-                    group: group,
+                    group: newGroup,
                     channels: group.channels,
                 });
             }

@@ -19,8 +19,9 @@ export class ChannelsService {
     ): Promise<Channel> {
         try {
             console.log('create Channel');
-            console.log('Division ID: ', divisionId);
+            console.log('Division ID: ', createDto);
             console.log('Group ID: ', groupId);
+            console.log('createDto: ', createDto);
             return await this.model.create(createDto);
         } catch (error) {
             throw new HttpException('Conflict!', HttpStatus.CONFLICT);
@@ -47,7 +48,7 @@ export class ChannelsService {
                 filter = { group: groupId, ...filter };
 
             return this.model
-                .find({ group: groupId })
+                .find(filter)
                 .populate('owners')
                 .populate('members')
                 .populate('messages');

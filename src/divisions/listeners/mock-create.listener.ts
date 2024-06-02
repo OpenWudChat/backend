@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { EventEmitter2, OnEvent } from '@nestjs/event-emitter';
 import { DivisionsService } from '../divisions.service';
 import { CreateDivisionDto } from '../dto/create-division.dto';
+import {User} from "../../user/schemas/user.schema";
 
 @Injectable()
 export class MockCreateListener {
@@ -33,7 +34,7 @@ export class MockCreateListener {
                 ],
                 minRole: 'client',
                 visible: true,
-            } as CreateDivisionDto);
+            } as CreateDivisionDto, null as User);
 
             this.eventEmitter.emit('mock.create.groups', {
                 users: event.users,
@@ -216,7 +217,7 @@ export class MockCreateListener {
                 ],
                 minRole: 'client',
                 visible: true,
-            } as CreateDivisionDto);
+            } as CreateDivisionDto, event.users.demoUserJohn._id);
 
             this.eventEmitter.emit('mock.create.groups', {
                 users: event.users,

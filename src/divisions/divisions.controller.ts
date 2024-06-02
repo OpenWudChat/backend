@@ -47,12 +47,13 @@ export class DivisionsController {
     })
     create(
         @Body() createDivisionDto: CreateDivisionDto,
+        @CurrentUser() currentUser?: User,
         @Query('userId') userId?: string,
     ) {
         if (userId) {
             return this.divisionsService.createComputed(createDivisionDto);
         } else {
-            return this.divisionsService.create(createDivisionDto);
+            return this.divisionsService.create(createDivisionDto, currentUser);
         }
     }
 

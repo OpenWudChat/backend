@@ -14,14 +14,20 @@ export class DivisionsService {
         @InjectModel(Division.name) private readonly model: Model<Division>,
     ) {}
 
-    async create(createDto: CreateDivisionDto): Promise<Division> {
+    async create(createDto: CreateDivisionDto, currentUser: User): Promise<Division> {
         try {
+            if (currentUser) {
+                createDto.owners = [];
+                createDto.owners.push(currentUser)
+                createDto.members = [];
+                createDto.members.push(currentUser)
+            }
             const division = await this.model.create(createDto);
             this.eventEmitter.emit('division.created', division._id);
 
             return division;
         } catch (error) {
-            throw new HttpException('Conflict!', HttpStatus.CONFLICT);
+            throw new HttpException(`Conflict!: ${error}`, HttpStatus.CONFLICT);
         }
     }
 
@@ -41,7 +47,7 @@ export class DivisionsService {
         }
     }
 
-    async findAll(currentUser?: User): Promise<Division[] | null> {
+    async findAll(currentUser: User): Promise<Division[] | null> {
         try {
             let filter = {};
             if (currentUser)
