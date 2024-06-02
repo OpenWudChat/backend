@@ -44,7 +44,7 @@ export class MessagesController {
         @Param('groupId') groupId: string,
         @Param('channelId') channelId: string,
     ) {
-        console.log(divisionId, groupId, channelId);
+        // console.log(divisionId, groupId, channelId);
         return this.messagesService.create(createMessageDto);
     }
 

@@ -94,7 +94,7 @@ export class SocketsGateway
         @MessageBody() data: SocketMessage,
         @ConnectedSocket() socket: Socket,
     ): WsResponse<unknown> {
-        console.log(data);
+        //console.log(data);
         const event = 'chat_message';
         socket.broadcast.emit(event, data);
         return { event, data };

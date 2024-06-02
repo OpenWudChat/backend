@@ -20,7 +20,7 @@ export class MockCreateListener {
 
         try {
             for (const channel of event.channels) {
-                console.log(event.group)
+                // console.log(event.group)
                 await this.service.create(event.division._id, event.group._id, {
                     name: channel.name,
                     description: channel.description,

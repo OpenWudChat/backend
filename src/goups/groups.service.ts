@@ -20,7 +20,7 @@ export class GroupsService {
     ): Promise<Group> {
         try {
             console.log('create Group');
-            console.log('Division ID: ', divisionId);
+            console.log('[GroupsService] Division ID: ', divisionId);
             return await this.model.create(createDto);
         } catch (error) {
             throw new HttpException('Conflict!', HttpStatus.CONFLICT);
