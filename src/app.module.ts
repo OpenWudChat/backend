@@ -10,7 +10,7 @@ import { SocketsModule } from './sockets/sockets.module';
 import { GroupsModule } from './goups/groups.module';
 import { RolesModule } from './roles/roles.module';
 import { EventEmitterModule } from '@nestjs/event-emitter';
-import { DivisionsModule } from './divisions/divisions.module';
+import { TenantsModule } from './tenants/tenants.module';
 import { ChannelsModule } from './channels/channels.module';
 
 @Module({
@@ -49,7 +49,7 @@ import { ChannelsModule } from './channels/channels.module';
         SocketsModule,
         GroupsModule,
         RolesModule,
-        DivisionsModule,
+        TenantsModule,
         ChannelsModule,
     ],
     controllers: [AppController],

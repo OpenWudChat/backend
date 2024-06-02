@@ -4,10 +4,10 @@ import {Prop} from "@nestjs/mongoose";
 import mongoose from "mongoose";
 import {User} from "../../user/schemas/user.schema";
 
-export class CreateDivisionDto {
+export class CreateTenantDto {
     @ApiProperty({
         example: 'Ambulant',
-        description: 'Name of the Division',
+        description: 'Name of the Tenant',
     })
     @IsNotEmpty()
     @IsString()
@@ -15,28 +15,28 @@ export class CreateDivisionDto {
 
     @ApiProperty({
         example: 'Ein Bereich für ambulante Mitarbeiter',
-        description: 'Description of the Division',
+        description: 'Description of the Tenant',
     })
     @IsString()
     description: string;
 
     @ApiProperty({
         example: '#FF5733',
-        description: 'HEX Color of the Division',
+        description: 'HEX Color of the Tenant',
     })
     @IsString()
     color: string;
 
     @ApiProperty({
         example: 'car',
-        description: 'Icon of the Division',
+        description: 'Icon of the Tenant',
     })
     @IsString()
     icon: string;
 
     @ApiProperty({
         example: [],
-        description: 'Owners of the Division',
+        description: 'Owners of the Tenant',
     })
     @IsArray()
     @IsString()@Prop([{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }])
@@ -44,7 +44,7 @@ export class CreateDivisionDto {
 
     @ApiProperty({
         example: [],
-        description: 'Members of the Division',
+        description: 'Members of the Tenant',
     })
     @IsArray()
     @IsString()@Prop([{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }])
@@ -52,7 +52,7 @@ export class CreateDivisionDto {
 
     @ApiProperty({
         example: [],
-        description: 'Groups of the Division',
+        description: 'Groups of the Tenant',
     })
     @IsArray()
     @IsString()
@@ -60,14 +60,14 @@ export class CreateDivisionDto {
 
     @ApiProperty({
         example: 'USER',
-        description: 'Min Role of User for this Division',
+        description: 'Min Role of User for this Tenant',
     })
     @IsString()
     minRole: string;
 
     @ApiProperty({
         example: true,
-        description: 'Is this Division currently visible?',
+        description: 'Is this Tenant currently visible?',
     })
     @IsBoolean()
     visible: boolean;

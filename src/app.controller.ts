@@ -39,4 +39,15 @@ export class AppController {
     deleteMockData(): any {
         return this.appService.deleteMockData();
     }
+
+    @Get('install')
+    @ApiOperation({ summary: 'Install Data to start witch Luminaa in Production' })
+    @ApiResponse({
+        status: 200,
+        description: 'Install all Data to work with Luminaa',
+        type: String,
+    })
+    install(): any {
+        return this.appService.install();
+    }
 }

@@ -15,12 +15,10 @@ export class GroupsService {
     ) {}
 
     async create(
-        divisionId: string,
+        division: any,
         createDto: CreateGroupDto,
     ): Promise<Group> {
         try {
-            console.log('create Group');
-            console.log('[GroupsService] Division ID: ', divisionId);
             return await this.model.create(createDto);
         } catch (error) {
             throw new HttpException('Conflict!', HttpStatus.CONFLICT);

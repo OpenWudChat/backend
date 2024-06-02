@@ -3,7 +3,7 @@ import { EventEmitter2, OnEvent } from '@nestjs/event-emitter';
 import { GroupsService } from '../groups.service';
 
 @Injectable()
-export class CreateDivisionListener {
+export class DivisionCreatedListener {
     constructor(
         private readonly service: GroupsService,
         private eventEmitter: EventEmitter2,
@@ -16,17 +16,17 @@ export class CreateDivisionListener {
         try {
             const newGroup = await this.service.create(event._id, {
                 name: 'Intern',
-                description: 'Austausch für die Mitarbeiter',
+                description: 'Austausch Gruppe für die Mitarbeiter',
                 color: '#000000',
                 icon: 'shield',
-                division: event._id,
+                division: event,
                 channels: [],
                 members: event.members,
                 owners: event.owners,
                 minRole: event.minRole || 'client',
                 visible: true,
             });
-            this.eventEmitter.emit('mock.create.channels', {
+            this.eventEmitter.emit('group.created', {
                 users: event.users,
                 division: event.division,
                 group: newGroup,

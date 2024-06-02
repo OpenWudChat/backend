@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { DivisionsService } from './divisions.service';
-import { DivisionsController } from './divisions.controller';
+import { TenantsService } from './tenants.service';
+import { TenantsController } from './tenants.controller';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Division, DivisionSchema } from './schemas/division.schema';
+import { Tenant, TenantsSchema } from './schemas/tenants.schema';
 import { User, UserSchema } from '../user/schemas/user.schema';
 import { MockCreateListener } from './listeners/mock-create.listener';
 import { MockDeleteListener } from './listeners/mock-delete.listener';
@@ -10,11 +10,11 @@ import { MockDeleteListener } from './listeners/mock-delete.listener';
 @Module({
     imports: [
         MongooseModule.forFeature([
-            { name: Division.name, schema: DivisionSchema },
+            { name: Tenant.name, schema: TenantsSchema },
             { name: User.name, schema: UserSchema },
         ]),
     ],
-    controllers: [DivisionsController],
-    providers: [DivisionsService, MockCreateListener, MockDeleteListener],
+    controllers: [TenantsController],
+    providers: [TenantsService, MockCreateListener, MockDeleteListener],
 })
-export class DivisionsModule {}
+export class TenantsModule {}

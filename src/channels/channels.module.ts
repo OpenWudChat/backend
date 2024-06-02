@@ -3,7 +3,7 @@ import { ChannelsService } from './channels.service';
 import { ChannelsController } from './channels.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Channel, ChannelSchema } from './schemas/channel.schema';
-import { Division, DivisionSchema } from '../divisions/schemas/division.schema';
+import { Tenant, TenantsSchema } from '../tenants/schemas/tenants.schema';
 import { Group, GroupSchema } from '../goups/schemas/group.schema';
 import { MockCreateListener } from './listeners/mock-create.listener';
 import { MockDeleteListener } from './listeners/mock-delete.listener';
@@ -12,7 +12,7 @@ import { MockDeleteListener } from './listeners/mock-delete.listener';
     imports: [
         MongooseModule.forFeature([
             { name: Channel.name, schema: ChannelSchema },
-            { name: Division.name, schema: DivisionSchema },
+            { name: Tenant.name, schema: TenantsSchema },
             { name: Group.name, schema: GroupSchema },
         ]),
     ],

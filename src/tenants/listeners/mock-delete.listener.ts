@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { OnEvent } from '@nestjs/event-emitter';
-import { DivisionsService } from '../divisions.service';
+import { TenantsService } from '../tenants.service';
 
 @Injectable()
 export class MockDeleteListener {
-    constructor(private readonly service: DivisionsService) {}
+    constructor(private readonly service: TenantsService) {}
 
     @OnEvent('mock.delete')
     async handleMockDeleteEvent() {

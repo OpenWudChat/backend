@@ -9,6 +9,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { User, UserSchema } from '../user/schemas/user.schema';
 import { MockCreateListener } from './listeners/mock-create.listener';
+import {InstallLuminaaListener} from "./listeners/install.listener";
 
 @Module({
     imports: [
@@ -25,6 +26,6 @@ import { MockCreateListener } from './listeners/mock-create.listener';
         ConfigModule,
     ],
     controllers: [AuthController],
-    providers: [AuthService, AuthHelper, JwtStrategy, MockCreateListener],
+    providers: [AuthService, AuthHelper, JwtStrategy, MockCreateListener, InstallLuminaaListener],
 })
 export class AuthModule {}

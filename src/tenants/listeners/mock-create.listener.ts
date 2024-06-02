@@ -1,22 +1,22 @@
 import { Injectable } from '@nestjs/common';
 import { EventEmitter2, OnEvent } from '@nestjs/event-emitter';
-import { DivisionsService } from '../divisions.service';
-import { CreateDivisionDto } from '../dto/create-division.dto';
+import { TenantsService } from '../tenants.service';
+import { CreateTenantDto } from '../dto/create-tenant.dto';
 import {User} from "../../user/schemas/user.schema";
 
 @Injectable()
 export class MockCreateListener {
     constructor(
-        private readonly service: DivisionsService,
+        private readonly service: TenantsService,
         private eventEmitter: EventEmitter2,
     ) {}
 
-    @OnEvent('mock.create.divisions')
+    @OnEvent('mock.create.tenants')
     async handleMockCreateEvent(event: { users: any }) {
-        console.log('[EVENT] [MOCK] [Divisions] [Listeners] [mock.create.divisions] EventData');
+        console.log('[EVENT] [MOCK] [Tenants] [Listeners] [mock.create.tenants] EventData');
         try {
             // Ambulant
-            const divisionAmbulant = await this.service.create({
+            const tenantAmbulant = await this.service.create({
                 name: 'Ambulant',
                 description: 'Demo Bereich: Ambulant',
                 color: '#000000',
@@ -34,7 +34,7 @@ export class MockCreateListener {
                 ],
                 minRole: 'client',
                 visible: true,
-            } as CreateDivisionDto, null as User);
+            } as CreateTenantDto, null as User);
 
             this.eventEmitter.emit('mock.create.groups', {
                 users: event.users,
@@ -194,7 +194,7 @@ export class MockCreateListener {
                         minRole: 'client',
                     },
                 ],
-                division: divisionAmbulant,
+                division: tenantAmbulant,
             });
 
 
@@ -217,7 +217,7 @@ export class MockCreateListener {
                 ],
                 minRole: 'client',
                 visible: true,
-            } as CreateDivisionDto, event.users.demoUserJohn._id);
+            } as CreateTenantDto, event.users.demoUserJohn._id);
 
             this.eventEmitter.emit('mock.create.groups', {
                 users: event.users,

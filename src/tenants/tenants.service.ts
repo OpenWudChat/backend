@@ -1,20 +1,20 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { CreateDivisionDto } from './dto/create-division.dto';
-import { UpdateDivisionDto } from './dto/update-division.dto';
+import { CreateTenantDto } from './dto/create-tenant.dto';
+import { UpdateTenantDto } from './dto/update-tenant.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Division } from './schemas/division.schema';
+import { Tenant } from './schemas/tenants.schema';
 import { EventEmitter2 } from '@nestjs/event-emitter';
 import {User} from "../user/schemas/user.schema";
 
 @Injectable()
-export class DivisionsService {
+export class TenantsService {
     constructor(
         private eventEmitter: EventEmitter2,
-        @InjectModel(Division.name) private readonly model: Model<Division>,
+        @InjectModel(Tenant.name) private readonly model: Model<Tenant>,
     ) {}
 
-    async create(createDto: CreateDivisionDto, currentUser: User): Promise<Division> {
+    async create(createDto: CreateTenantDto, currentUser: User): Promise<Tenant> {
         try {
             if (currentUser) {
                 createDto.owners = [];
@@ -22,16 +22,16 @@ export class DivisionsService {
                 createDto.members = [];
                 createDto.members.push(currentUser)
             }
-            const division = await this.model.create(createDto);
-            this.eventEmitter.emit('division.created', division);
+            const tenant = await this.model.create(createDto);
+            this.eventEmitter.emit('tenant.created', tenant);
 
-            return division;
+            return tenant;
         } catch (error) {
             throw new HttpException(`Conflict!: ${error}`, HttpStatus.CONFLICT);
         }
     }
 
-    async createComputed(createDto: CreateDivisionDto): Promise<Division> {
+    async createComputed(createDto: CreateTenantDto): Promise<Tenant> {
         try {
             return await this.model.create(createDto);
         } catch (error) {
@@ -39,15 +39,15 @@ export class DivisionsService {
         }
     }
 
-    async findOne(id: string): Promise<Division | null> {
+    async findOne(id: string): Promise<Tenant | null> {
         try {
             return this.model.findOne({ _id: id });
         } catch (error) {
-            throw new HttpException('Division not found', HttpStatus.NOT_FOUND);
+            throw new HttpException('Tenant not found', HttpStatus.NOT_FOUND);
         }
     }
 
-    async findAll(currentUser: User): Promise<Division[] | null> {
+    async findAll(currentUser: User): Promise<Tenant[] | null> {
         try {
             let filter = {};
             if (currentUser)
@@ -66,12 +66,12 @@ export class DivisionsService {
         }
     }
 
-    async update(id: string, updateDto: UpdateDivisionDto): Promise<Division> {
+    async update(id: string, updateDto: UpdateTenantDto): Promise<Tenant> {
         try {
             await this.model.updateOne({ _id: id }, updateDto);
             return await this.model.findOne({ id });
         } catch (error) {
-            throw new HttpException('Division not found', HttpStatus.NOT_FOUND);
+            throw new HttpException('Tenant not found', HttpStatus.NOT_FOUND);
         }
     }
 
@@ -79,7 +79,7 @@ export class DivisionsService {
         try {
             return await this.model.findByIdAndDelete(id);
         } catch (error) {
-            throw new HttpException('Division not found', HttpStatus.NOT_FOUND);
+            throw new HttpException('Tenant not found', HttpStatus.NOT_FOUND);
         }
     }
 

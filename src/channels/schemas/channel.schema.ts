@@ -3,7 +3,7 @@ import mongoose, { HydratedDocument } from 'mongoose';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Message } from '../../messages/schemas/message.schema';
 import { User } from '../../user/schemas/user.schema';
-import { Division } from '../../divisions/schemas/division.schema';
+import { Tenant } from '../../tenants/schemas/tenants.schema';
 
 export type ChannelDocument = HydratedDocument<Channel>;
 
@@ -53,7 +53,7 @@ export class Channel {
         description: 'Messages of the Channel',
     })
     @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Division' })
-    division: Division;
+    division: Tenant;
 
     @ApiProperty({
         description: 'Messages of the Channel',

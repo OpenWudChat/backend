@@ -9,9 +9,9 @@ import {
     Query,
     UseGuards,
 } from '@nestjs/common';
-import { DivisionsService } from './divisions.service';
-import { CreateDivisionDto } from './dto/create-division.dto';
-import { UpdateDivisionDto } from './dto/update-division.dto';
+import { TenantsService } from './tenants.service';
+import { CreateTenantDto } from './dto/create-tenant.dto';
+import { UpdateTenantDto } from './dto/update-tenant.dto';
 import {
     ApiBearerAuth,
     ApiOperation,
@@ -19,25 +19,25 @@ import {
     ApiResponse,
     ApiTags,
 } from '@nestjs/swagger';
-import { Division } from './schemas/division.schema';
+import { Tenant } from './schemas/tenants.schema';
 import { JwtAuthGuard } from '../auth/guards/auth.guard';
 import {CurrentUser} from "../core/decorators/current-user.decorator";
 import {User} from "../user/schemas/user.schema";
 
-@ApiTags(`divisions`)
-@Controller('divisions')
-export class DivisionsController {
-    constructor(private readonly divisionsService: DivisionsService) {}
+@ApiTags(`tenanta`)
+@Controller('tenants')
+export class TenantsController {
+    constructor(private readonly tenantsService: TenantsService) {}
 
     @Post()
     @UseGuards(JwtAuthGuard)
     @ApiBearerAuth()
-    @ApiOperation({ summary: 'Create Division' })
+    @ApiOperation({ summary: 'Create Tenant' })
     @ApiResponse({ status: 403, description: 'Forbidden.' })
     @ApiResponse({
         status: 200,
-        description: 'New Division created',
-        type: Division,
+        description: 'New Tenant created',
+        type: Tenant,
     })
     @ApiQuery({
         name: 'userId',
@@ -46,72 +46,72 @@ export class DivisionsController {
         required: false,
     })
     create(
-        @Body() createDivisionDto: CreateDivisionDto,
+        @Body() createTenantDto: CreateTenantDto,
         @CurrentUser() currentUser?: User,
         @Query('userId') userId?: string,
     ) {
         if (userId) {
-            return this.divisionsService.createComputed(createDivisionDto);
+            return this.tenantsService.createComputed(createTenantDto);
         } else {
-            return this.divisionsService.create(createDivisionDto, currentUser);
+            return this.tenantsService.create(createTenantDto, currentUser);
         }
     }
 
     @Get()
     @UseGuards(JwtAuthGuard)
     @ApiBearerAuth()
-    @ApiOperation({ summary: 'Get all Division' })
+    @ApiOperation({ summary: 'Get all Tenant' })
     @ApiResponse({ status: 403, description: 'Forbidden.' })
     @ApiResponse({
         status: 200,
-        description: 'List of all Division',
-        type: [Division],
+        description: 'List of all Tenant',
+        type: [Tenant],
     })
     findAll(@CurrentUser() currentUser: User) {
-        return this.divisionsService.findAll(currentUser);
+        return this.tenantsService.findAll(currentUser);
     }
 
     @Get(':id')
     @UseGuards(JwtAuthGuard)
     @ApiBearerAuth()
-    @ApiOperation({ summary: 'Get Division by ID' })
+    @ApiOperation({ summary: 'Get Tenant by ID' })
     @ApiResponse({ status: 403, description: 'Forbidden.' })
     @ApiResponse({
         status: 200,
         description: 'The found record',
-        type: Division,
+        type: Tenant,
     })
     findOne(@Param('id') id: string) {
-        return this.divisionsService.findOne(id);
+        return this.tenantsService.findOne(id);
     }
 
     @Patch(':id')
     @UseGuards(JwtAuthGuard)
     @ApiBearerAuth()
-    @ApiOperation({ summary: 'Update Division by ID' })
+    @ApiOperation({ summary: 'Update Tenant by ID' })
     @ApiResponse({ status: 403, description: 'Forbidden.' })
     @ApiResponse({
         status: 200,
         description: 'Updated',
-        type: Division,
+        type: Tenant,
     })
     update(
         @Param('id') id: string,
-        @Body() updateDivisionDto: UpdateDivisionDto,
+        @Body() updateTenantDto: UpdateTenantDto,
     ) {
-        return this.divisionsService.update(id, updateDivisionDto);
+        return this.tenantsService.update(id, updateTenantDto);
     }
 
     @Delete(':id')
     @UseGuards(JwtAuthGuard)
     @ApiBearerAuth()
-    @ApiOperation({ summary: 'Delete Division by ID' })
+    @ApiOperation({ summary: 'Delete Tenant by ID' })
     @ApiResponse({ status: 403, description: 'Forbidden.' })
     @ApiResponse({
         status: 200,
         description: 'Deleted',
     })
     remove(@Param('id') id: string) {
-        return this.divisionsService.remove(id);
+        return this.tenantsService.remove(id);
     }
 }

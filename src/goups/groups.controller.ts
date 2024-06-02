@@ -58,7 +58,6 @@ export class GroupsController {
     })
     @ApiQuery({ name: 'divisionId', required: false })
     findAll(@CurrentUser() currentUser: User, @Query('divisionId') divisionId?: string) {
-        console.log('divisionId', divisionId);
         return this.groupsService.findAll(currentUser, divisionId);
     }
 

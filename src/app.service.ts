@@ -25,4 +25,11 @@ export class AppService {
             message: 'Mock data deleted!',
         };
     }
+
+    async install(): Promise<any> {
+        this.eventEmitter.emit('luminaa.install');
+        return {
+            message: 'Successful installed!',
+        };
+    }
 }

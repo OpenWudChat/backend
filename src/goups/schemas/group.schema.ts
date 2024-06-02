@@ -2,7 +2,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { ApiProperty } from '@nestjs/swagger';
 import mongoose, { HydratedDocument } from 'mongoose';
 import { Channel } from '../../channels/schemas/channel.schema';
-import { Division } from '../../divisions/schemas/division.schema';
+import { Tenant } from '../../tenants/schemas/tenants.schema';
 import { User } from '../../user/schemas/user.schema';
 
 export type GroupDocument = HydratedDocument<Group>;
@@ -53,7 +53,7 @@ export class Group {
         description: 'Division of the Group',
     })
     @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Division' })
-    division: Division;
+    division: Tenant;
 
     @ApiProperty({
         description: 'Owners of the Group',
