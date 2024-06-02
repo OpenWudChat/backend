@@ -10,8 +10,8 @@ export class GroupsListener {
     async handleGroupCreatedEvent(event: GroupCreatedEvent) {
         try {
             console.log(
-                '[SOCKETS] [EVENTS] [GroupsListener] group.created',
-                event,
+                '[EVENTS] [Sockets] [GroupsListener] [group.created] EventData: ',
+                // event,
             );
         } catch (e) {
             console.error(e);

@@ -9,8 +9,8 @@ export class ChannelsListener {
     async handleChannelCreatedEvent(event: any) {
         try {
             console.log(
-                '[SOCKETS] [EVENTS] [ChannelsListener] channel.created',
-                event,
+                '[EVENTS] [Sockets] [ChannelsListener] [channel.created] EventData: ',
+                // event,
             );
         } catch (e) {
             console.error(e);

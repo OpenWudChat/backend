@@ -16,7 +16,7 @@ export class MockCreateListener {
         groups: any;
         division: any;
     }) {
-        console.log('[EVENT] [mock.create.groups] EventData');
+        console.log('[EVENT] [MOCK] [Groups] [Listeners] [mock.create.groups] EventData');
 
         try {
             for (const group of event.groups) {

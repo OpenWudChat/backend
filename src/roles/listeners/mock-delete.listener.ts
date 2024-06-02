@@ -8,7 +8,7 @@ export class MockDeleteListener {
 
     @OnEvent('mock.delete')
     async handleMockDeleteEvent() {
-        console.log('[EVENT] [mock.delete.roles] EventData');
+        console.log('[EVENT] [MOCK] [Roles] [Listeners] [mock.delete] EventData');
         try {
             // Delete Demo Roles
             await this.service.deleteAll();

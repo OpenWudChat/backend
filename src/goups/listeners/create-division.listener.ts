@@ -11,7 +11,7 @@ export class CreateDivisionListener {
 
     @OnEvent('division.created')
     async handleMockCreateEvent(event: any) {
-        console.log('[EVENT] [groups] [division.created] EventData:', event);
+        console.log('[EVENT] [Groups] [Listeners] [division.created] EventData');
 
         try {
             const newGroup = await this.service.create(event._id, {

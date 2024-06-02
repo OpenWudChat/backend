@@ -8,7 +8,7 @@ export class MockCreateListener {
 
     @OnEvent('mock.create.roles')
     async handleMockCreateEvent() {
-        console.log('[EVENT] [mock.create.roles] EventData');
+        console.log('[EVENT] [MOCK] [Roles] [Listeners] [mock.create.roles] EventData');
 
         try {
             await this.service.create({

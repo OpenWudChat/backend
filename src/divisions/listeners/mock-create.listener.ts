@@ -13,7 +13,7 @@ export class MockCreateListener {
 
     @OnEvent('mock.create.divisions')
     async handleMockCreateEvent(event: { users: any }) {
-        console.log('[EVENT] [mock.create.divisions] EventData');
+        console.log('[EVENT] [MOCK] [Divisions] [Listeners] [mock.create.divisions] EventData');
         try {
             // Ambulant
             const divisionAmbulant = await this.service.create({

@@ -7,8 +7,8 @@ export class DivisionsListener {
     async handleDivisionCreatedEvent(event: any) {
         try {
             console.log(
-                '[SOCKETS] [EVENTS] [DivisionsListener] division.created',
-                event,
+                '[EVENTS] [Sockets] [DivisionsListener] [division.created] EventData: ',
+                // event,
             );
         } catch (e) {
             console.error(e);
