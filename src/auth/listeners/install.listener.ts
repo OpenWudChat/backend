@@ -12,7 +12,7 @@ export class InstallLuminaaListener {
 
         try {
             return await this.service.register({
-                email: 'admin@luminaa.chat',
+                email: 'admin',
                 firstName: 'Admin',
                 lastName: 'Admin',
                 password: 'admin',
