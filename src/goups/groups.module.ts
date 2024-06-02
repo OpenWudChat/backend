@@ -7,6 +7,7 @@ import { User, UserSchema } from '../user/schemas/user.schema';
 import { Division, DivisionSchema } from '../divisions/schemas/division.schema';
 import { MockCreateListener } from './listeners/mock-create.listener';
 import { MockDeleteListener } from './listeners/mock-delete.listener';
+import {CreateDivisionListener} from "./listeners/create-division.listener";
 
 @Module({
     imports: [
@@ -17,6 +18,6 @@ import { MockDeleteListener } from './listeners/mock-delete.listener';
         ]),
     ],
     controllers: [GroupsController],
-    providers: [GroupsService, MockCreateListener, MockDeleteListener],
+    providers: [GroupsService, MockCreateListener, MockDeleteListener, CreateDivisionListener],
 })
 export class GroupsModule {}

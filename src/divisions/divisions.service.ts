@@ -23,7 +23,7 @@ export class DivisionsService {
                 createDto.members.push(currentUser)
             }
             const division = await this.model.create(createDto);
-            this.eventEmitter.emit('division.created', division._id);
+            this.eventEmitter.emit('division.created', division);
 
             return division;
         } catch (error) {
