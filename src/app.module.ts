@@ -12,6 +12,7 @@ import { RolesModule } from './roles/roles.module';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { TenantsModule } from './tenants/tenants.module';
 import { ChannelsModule } from './channels/channels.module';
+import { TemplatesModule } from './templates/templates.module';
 
 @Module({
     imports: [
@@ -51,6 +52,7 @@ import { ChannelsModule } from './channels/channels.module';
         RolesModule,
         TenantsModule,
         ChannelsModule,
+        TemplatesModule,
     ],
     controllers: [AppController],
     providers: [AppService],
